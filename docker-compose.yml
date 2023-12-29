@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  registry:
+    image: registry:latest
+    ports:
+      - "5001:5000"
+    environment:
+      REGISTRY_HTTP_SECRET: "super-http-secret"
+
+  devpi:
+    build:
+      context: ./devpi
+    ports:
+      - "3141:3141"
+    environment:
+      DEVPI_ROOT_PASSWORD: "devpiRootPassword123"
+      DEVPI_SERVER_ROOT: /devpi/server
