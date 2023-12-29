@@ -1,6 +1,10 @@
 ARG PYTHON_VERSION=3.12
 FROM python:${PYTHON_VERSION}-slim
 
+RUN apt-get update
+RUN apt-get dist-upgrade -y
+RUN apt-get -y install build-essential
+
 RUN useradd -m worker
 USER worker
 
